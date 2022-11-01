@@ -1,0 +1,28 @@
+
+    {{>navbar}}
+{{sendMailFeedback}}
+
+    <div class="container">
+        <h2>Contáctanos</h2>
+        <form class="formContact" name="formulario" method="POST" action="/contacto">
+
+            <label for="name"></label>
+            <input class="formula" placeholder="Nombre" type="text" name="name" maxlength="15" autofocus value="{{formData.name}}">
+        
+        
+            <label for="email"></label>
+            <input class="formula" name="email" placeholder="Email" type="text" autofocus value="{{formData.email}}">
+        
+            <label for="consulta"></label>
+            <textarea class="formula" placeholder="Ingrese su consulta aquí" type="text" name="consulta" maxlength="300" cols="50" rows="6">{{formData.consulta}}</textarea>
+        
+            <input class="formula" type="submit" value="Enviar">
+
+        {{#each arrayWarning}}
+        <p>{{msg}}</p>
+        {{/each}}
+    
+    </form>
+    {{>footer}}
+</div>
+

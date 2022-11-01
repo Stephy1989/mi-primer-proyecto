@@ -1,0 +1,49 @@
+<div class="gridContainer2">
+{{>navbar}}
+    <div class="container cont-form">
+
+
+        <form class="formulario row mb-3" action="/registerForm" method="POST">
+        <h3>Formulario de registro</h3>
+        <div class="mb">
+            <label for="name" class="form-label"></label>
+            <input name = "name" type="text" autocomplete="name" class="form-control" placeholder="Nombre" autofocus value="{{formData.name}}">
+        </div>
+        
+        <div class="mb">
+            <label for="lastName" class="form-label"></label>
+            <input name = "lastName"  class="form-control" type="text" autocomplete="additional-name" placeholder="Apellido" autofocus value="{{formData.lastName}}">
+        </div>
+        
+        <div class="mb">
+            <label for="email" class="form-label"></label>
+            <input name = "email" type="text" class="form-control" autocomplete="email" placeholder="Email" autofocus value="{{formData.email}}">
+        </div>
+        <div class="mb">
+            <label for="email2" class="form-label"></label>
+            <input name = "email2" type="text" class="form-control" autocomplete="email" placeholder="Confirmar Email" autofocus value="{{formData.email2}}">
+        </div>
+        
+        <div class="mb">
+            <label for="password" class="form-label"></label>
+            <input name = "password" type="password" class="form-control" autocomplete="current-password" placeholder="Contraseña">
+        </div>
+        <div class="mb cnt">
+        <input type="submit" class="btn btn-primary" value="Registrarme">
+        </div>
+        <div class="mb cnt">
+        <a class="mb" href="/loginForm">Ya tengo una cuenta!</a>
+        </div>
+        </form>
+        
+  
+
+        <p>{{message}}</p>
+        
+    {{#each arrayWarning}}
+    <p>{{msg}}</p>
+    {{/each}}
+    </div>
+
+{{>footer}}
+</div>

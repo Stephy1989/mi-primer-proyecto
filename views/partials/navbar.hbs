@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg bg-light">
+    {{#if user}}
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+      <a class="nav-link" href="/">Inicio</a>
+      <a class="nav-link" href="contacto">Contáctanos</a>
+      <a class="nav-link" href="nosotros">Sobre nosotros</a>
+      </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+      <a class="nav-link" href="/logOut"><input type="button" value="logout"></a>
+      <a class="nav-link" href="/usuarios/settings"><input type="button" value="Configuración de la cuenta"></a>
+      <a class="nav-link" href="/usuarios/validar"><input type="button" value="Validar cuenta"></a>
+    </div>
+      </div>
+    {{else}}
+      <div class="container-fluid navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+    <a class="nav-link" href="/">Inicio</a>
+    <a class="nav-link" href="contacto">Contáctanos</a>
+    <a class="nav-link" href="nosotros">Sobre nosotros</a>
+    <a class="nav-link" href="/loginForm">Iniciar sesión</a>
+    <a class="nav-link" href="/registerForm">Registrarse</a>
+    </div>
+    </div>
+    </div>
+    {{/if}}
+</nav>
+</div>
+
+ 

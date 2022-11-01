@@ -1,0 +1,40 @@
+{
+  "name": "web.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stephy1989/mi-primer-proyecto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stephy1989/mi-primer-proyecto/issues"
+  },
+  "homepage": "https://github.com/Stephy1989/mi-primer-proyecto#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bootstrap": "^5.2.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "mongoose": "^6.6.4",
+    "node-fetch": "^3.2.10",
+    "nodemailer": "^6.8.0",
+    "password-validator": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "nodemonConfig": {
+    "ext": "js, json, hbs, html, css"
+  },
+  "type": "module"
+}

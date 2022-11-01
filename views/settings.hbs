@@ -1,0 +1,47 @@
+{{navbar}}
+<div>
+    <div>
+    <h2>Información de la cuenta</h2>
+    <p>Última modificación: {{user.updatedAt}}</p>
+    {{#if user.validEmail}}
+    <p>Su cuenta ha sido verificada</p>
+    {{else}}
+    <p>Su cuenta no ha sido verificada</p>
+    {{/if}}
+    </div>
+    <div class="container">
+
+    <form class="formularioRegistro" action="/usuarios/settings" method="POST">
+        
+            <label for="name"></label>
+            <input name = "name" type="text" autocomplete="name" value="{{user.name}}">
+        
+        
+            <label for="lastName"></label>
+            <input name = "lastName" type="text" autocomplete="additional-name" value="{{user.lastName}}">
+        
+        
+            <label for="email"></label>
+            <input name = "email" type="text" autocomplete="email" value="{{user.email}}">
+        
+        
+            <label for="password"></label>
+            <input name = "password" type="password" autocomplete="current-password" placeholder="Contraseña">
+
+    </div>
+    <div>
+    {{message}}
+    </div>
+    
+    <div>
+    <input type="submit" value="Confirmar cambios">
+    <a href="/deleteUser"><input class="btn_logout" type="button" value="Borrar cuenta"></a>
+    <a href="/">Volver al inicio</a>
+    </div>
+    </form>
+    <div>
+        <div>
+            
+        </div>
+    </div>
+</div>
