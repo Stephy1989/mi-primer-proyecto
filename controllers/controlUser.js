@@ -23,7 +23,7 @@ async function sendLoginForm (req, res, next){
                 validEmail: user[0].validEmail
             }
             req.session.user = usr;
-            res.redirect("/usuarios")
+            res.render("usuarios", {usr})
         }else return res.render("loginForm", {message: "Email o contraseña incorrectos"})
         
     }else return res.render("loginForm", {message: "Email o contraseña incorrectos"})
@@ -35,42 +35,69 @@ function getRegisterForm (req, res, next){
 res.render("registerForm")
 };
 //Envía el formulario de registro y carga el nuevo usuario a la base de datos
+
+function isEmptyObject(obj) {
+    for (var property in obj) {
+        if (obj.hasOwnProperty(property)) {
+            return false;
+        }
+    }
+ 
+    return true;
+};
+
 async function sendRegisterForm (req, res, next){
     const {name, lastName, email, password} = req.body
-    const hashedPass = await encrypt(password)
-    
-    const newUser = new User({
-        name, lastName, email, password: hashedPass
-    })
-    newUser.save((err)=>{ //Carga el nuevo usuario en la base de datos
-        if (!err){
-            const usr = {
-                id: newUser._id,
-                name: newUser.name,
-                lastName: newUser.lastName,
-                updatedAt: newUser.updatedAt,
-                validEmail: newUser.validEmail
+    const hashedPass = await encrypt(password);
+    const user =  await User.find().where({email});
+    if (user.length === 0){
+        
+        const newUser = new User({
+            name, lastName, email, password: hashedPass
+        })
+        newUser.save((err)=>{ //Carga el nuevo usuario en la base de datos
+            if (!err){
+                const usr = {
+                    id: newUser._id,
+                    name: newUser.name,
+                    lastName: newUser.lastName,
+                    updatedAt: newUser.updatedAt,
+                    validEmail: newUser.validEmail
+                }
+                req.session.user = usr;
+                
+                res.render("usuarios", {usr})
+            }else {
+                console.log(err.message)
             }
-            req.session.user = usr
-            res.redirect("/usuarios")
-        }else {
-            console.log(err.message)
-        }
-    })
+        })
+    
+}else{
+        const messageRegister = "Ya existe un usuario registrado con esa dirección de email, verifique e intente nuevamente"
+        res.render("registerForm",  {messageRegister})
+    }
 };
 //Mostramos la configuracion de la cuenta
 async function getSettings(req, res){
-    const user = await User.findById(req.session.user.id)
-    res.render("settings", {user: req.session.user})
+    if(req.session.user){
+        const user = await User.findById(req.session.user.id)
+        const usr = req.session.user
+        res.render("settings", {usr})
+    }else{
+        res.render("errorPage")
+    }
 };
 //Enviamos la modificación de la cuenta
 async function sendSettings(req, res){
     try{
      const user = await User.findByIdAndUpdate(req.session.user.id, {name: req.body.name, 
         lastName: req.body.lastName, email:req.body.email})
-        res.redirect("/usuarios")
+        const usr = req.session.user;
+    
+        res.render("settings", {usr, message: "Los cambios han sido registrados correctamente"})
     }catch (err){
-       res.render("settings", {message: "Ocurrió un error, vuelva a intentarlo"})
+        const usr = req.session.user;
+       res.render("settings", {usr, message: "Ocurrió un error, vuelva a intentarlo"})
     }
 };
 //Mostramos la validacion de la cuenta

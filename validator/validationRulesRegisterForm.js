@@ -2,6 +2,7 @@ import validator from "express-validator";
 
 const {body, validationResult} = validator;
 
+
 const validationRulesReg = [
     body("name")
     .notEmpty().withMessage("Debe ingresar su nombre")
@@ -25,14 +26,22 @@ const validationRulesReg = [
             const validationError = validationResult(req);
             if (!validationError.isEmpty()){
                 const arrayWarning = validationError.array();
+                
+                const nameError = arrayWarning.find(nameError => nameError.param === "name");
+                const lastNameError = arrayWarning.find(lastNameError => lastNameError.param === "lastName");
+                const emailError = arrayWarning.find(emailError => emailError.param === "email");
+                const email2Error = arrayWarning.find(email2Error => email2Error.param === "email2");
+               
                 const formData = req.body;
-                res.render("registerForm", {arrayWarning, formData})
+
+                res.render("registerForm", {arrayWarning, nameError, lastNameError, emailError, email2Error, formData})
             }else return next()
 
             }else{
-                const message = "El email no coincide, verifique e intente de nuevo";
+                const emailError = {msg: "Los mails no coinciden, verifique e intente de nuevo"};
+                const email2Error = {msg: "Los mails no coinciden, verifique e intente de nuevo"};
                 const formData = req.body;
-                res.render("registerForm", {message, formData})
+                res.render("registerForm", {emailError, emailError, email2Error, formData})
         
         
             }

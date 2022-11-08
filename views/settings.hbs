@@ -1,47 +1,51 @@
-{{navbar}}
-<div>
-    <div>
-    <h2>Información de la cuenta</h2>
-    <p>Última modificación: {{user.updatedAt}}</p>
-    {{#if user.validEmail}}
+{{>navbar}}
+    <div class="container cont-form centrar-container">
+
+    
+        <form class="formulario row mb-3" action="/usuarios/settings" method="POST">
+    <h3>Información de la cuenta</h2>
+    <p>Última modificación: {{usr.updatedAt}}</p>
+    {{#if usr.validEmail}}
     <p>Su cuenta ha sido verificada</p>
     {{else}}
     <p>Su cuenta no ha sido verificada</p>
     {{/if}}
-    </div>
-    <div class="container">
+            <div class="mb">
+            <label class="form-label" for="name"></label>
+            <input class="form-control" name = "name" type="text" autocomplete="name" value="{{usr.name}}">
+            </div>
+        
+            <div class="mb">
+            <label class="form-label" for="lastName"></label>
+            <input class="form-control" name = "lastName" type="text" autocomplete="additional-name" value="{{usr.lastName}}">
+            </div>
+        
+            <div class="mb">
+            <label class="form-label" for="email"></label>
+            <input class="form-control" name = "email" type="text" autocomplete="email" value="{{usr.email}}">
+            </div>
+        
+            <div class="mb">
+            <label class="form-label" for="password"></label>
+            <input class="form-control" name = "password" type="password" autocomplete="current-password" placeholder="Contraseña">
+            </div>
 
-    <form class="formularioRegistro" action="/usuarios/settings" method="POST">
-        
-            <label for="name"></label>
-            <input name = "name" type="text" autocomplete="name" value="{{user.name}}">
-        
-        
-            <label for="lastName"></label>
-            <input name = "lastName" type="text" autocomplete="additional-name" value="{{user.lastName}}">
-        
-        
-            <label for="email"></label>
-            <input name = "email" type="text" autocomplete="email" value="{{user.email}}">
-        
-        
-            <label for="password"></label>
-            <input name = "password" type="password" autocomplete="current-password" placeholder="Contraseña">
+            {{#if message}}
+            <div>
+            {{message}}
+            </div>
+            {{/if}}
+            <div class="cnt">
+            <input class="btn btn-primary" type="submit" value="Confirmar cambios">
+        <a href="/usuarios/deleteUser"><input class="btn btn-warning" type="button" value="Borrar cuenta"></a>
+        </div>
+        <div class="cnt">
 
-    </div>
-    <div>
-    {{message}}
-    </div>
-    
-    <div>
-    <input type="submit" value="Confirmar cambios">
-    <a href="/deleteUser"><input class="btn_logout" type="button" value="Borrar cuenta"></a>
-    <a href="/">Volver al inicio</a>
-    </div>
+        <a href="/">Volver al inicio</a>
+        </div>
     </form>
     <div>
-        <div>
-            
-        </div>
-    </div>
-</div>
+
+    
+
+        

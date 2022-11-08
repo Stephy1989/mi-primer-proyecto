@@ -18,18 +18,12 @@ a{
     text-decoration: none;
     color: rgb(130, 128, 128);
 }
-.nav{
-    background-color: rgb(144, 159, 174);
-    display: flex;
-    padding: 5px;
-    flex-direction: column;
-    justify-items: flex-end;
-
-}
 
 a:hover{
     color: rgb(41, 41, 41);
 }
+
+/* Estilos de los formularios*/
 .formulario{
     display: flex;
     max-width: 400px;
@@ -52,4 +46,94 @@ a:hover{
 .cnt{
     padding-top: 10px;
     text-align: center;
+}
+.error-form{
+    display: inline;
+}
+.group-error{
+    color: red;
+    font-size: 16px;
+}
+
+.message-register{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: red;
+}
+.centrar-container{
+    padding-top: 400px;
+}
+/* Estilos cards de la pagina de inicio*/
+.tarjetas{
+    width: 100%;
+    max-width: fit-content;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+}
+.tarjetas .card-C{
+    width: 600px;
+    height: max-content;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    transition: all 0.25s;
+}
+
+.tarjetas .card-C:hover{
+    transform: translateY(-15px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+.tarjetas .card-C .imagen{
+    width: max-content;
+    height: 400px
+    
+}
+.tarjetas .card-C .imagen1{
+    width: 600px
+}
+
+.tarjetas .card-C .card-title{
+padding: 1rem;
+    background-color: white;
+    text-align: start;
+}
+.tarjetas .card-C .card-text{
+    padding: 0 1rem 1rem 1rem;
+    background-color: white;
+    text-align: start;
+    width: 600px
+}
+.card-body{
+    background-color: whitesmoke;
+}
+.cont-user{
+    display: block;
+}
+
+
+
+
+@media screen and (max-width: 720px){
+    .navbar{
+        max-width: 200px;
+        margin-left: 0;
+    }
+    .centrar-container{
+        padding-top: 200px;
+        width: 100%;
+    }
+    #containerHome{
+        min-width: 400px;
+    }
+    .tarjetas{
+        max-width: max-content;
+        min-width: 350px;
+        display: flex;
+        flex-direction: column;
+    }
 }

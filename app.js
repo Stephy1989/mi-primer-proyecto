@@ -41,7 +41,8 @@ mongoose.connect(URI, (err)=>{
     console.log(`Conectado a la base de datos`)
 });
 
-app.locals.sendMailFeedback = " ";
+app.locals.sendMailFeedback = "";
+app.locals.user = "";
 
 app.get("/", function(req, res){
     res.render("home")
@@ -61,13 +62,14 @@ app.get("/usuarios", auth, (req, res)=> {
     res.render("usuarios", {user: req.session.user},)
 });
 
-app.use("/usuarios/settings", auth, routerSettings);
+app.use("/usuarios/settings", routerSettings);
 
-app.use("/usuarios/validate", auth, routerValidate); 
+app.use("/usuarios/validate", routerValidate); 
 
-app.get("/deleteUser", auth, deleteUser)
+app.get("/usuarios/deleteUser", deleteUser)
 
-app.get("/logOut", auth, logOut)
+app.get("/usuarios/logOut", logOut)
+
 
 app.listen(PORT, function(err){
     !err?

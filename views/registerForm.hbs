@@ -1,49 +1,71 @@
-<div class="gridContainer2">
+
 {{>navbar}}
-    <div class="container cont-form">
+    <div class="container cont-form centrar-container">
 
 
         <form class="formulario row mb-3" action="/registerForm" method="POST">
-        <h3>Formulario de registro</h3>
+        <h3 class="cont-title">Formulario de registro</h3>
         <div class="mb">
             <label for="name" class="form-label"></label>
             <input name = "name" type="text" autocomplete="name" class="form-control" placeholder="Nombre" autofocus value="{{formData.name}}">
+            {{#if nameError}}
+            <div class="group-error">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <p class="error-form">{{nameError.msg}}</p>
+            </div>
+            {{/if}}
+            
         </div>
         
-        <div class="mb">
+        <div class="mb form__grupo">
             <label for="lastName" class="form-label"></label>
             <input name = "lastName"  class="form-control" type="text" autocomplete="additional-name" placeholder="Apellido" autofocus value="{{formData.lastName}}">
+            {{#if lastNameError}}
+            <div class="group-error">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <p class="error-form">{{lastNameError.msg}}</p>
+            </div>
+            {{/if}}
         </div>
         
-        <div class="mb">
+        <div class="mb form__grupo">
             <label for="email" class="form-label"></label>
             <input name = "email" type="text" class="form-control" autocomplete="email" placeholder="Email" autofocus value="{{formData.email}}">
+            {{#if emailError}}
+            <div class="group-error">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <p class="error-form">{{emailError.msg}}</p>
+            </div>
+            {{/if}}
         </div>
-        <div class="mb">
+        <div class="mb form__grupo">
             <label for="email2" class="form-label"></label>
             <input name = "email2" type="text" class="form-control" autocomplete="email" placeholder="Confirmar Email" autofocus value="{{formData.email2}}">
+            {{#if email2Error}}
+            <div class="group-error">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <p class="error-form">{{email2Error.msg}}</p>
+            </div>
+            {{/if}}
         </div>
         
         <div class="mb">
             <label for="password" class="form-label"></label>
             <input name = "password" type="password" class="form-control" autocomplete="current-password" placeholder="Contraseña">
         </div>
+        
+
         <div class="mb cnt">
         <input type="submit" class="btn btn-primary" value="Registrarme">
         </div>
         <div class="mb cnt">
         <a class="mb" href="/loginForm">Ya tengo una cuenta!</a>
         </div>
+        
+        <p class="message-register">{{messageRegister}}</p>
+        
         </form>
-        
-  
 
-        <p>{{message}}</p>
-        
-    {{#each arrayWarning}}
-    <p>{{msg}}</p>
-    {{/each}}
     </div>
 
 {{>footer}}
-</div>

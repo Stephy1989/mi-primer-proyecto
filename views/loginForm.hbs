@@ -1,17 +1,26 @@
 
     {{>navbar}}
-    <div class="containerLoginForm">
-        <form class="formularioLogin" action="/loginForm" method="POST">
+    <div class="container cont-form centrar-container">
+        <form class="formulario row mb-3" action="/loginForm" method="POST">
+        <h3 class="cont-title">Iniciar sesión</h3>
+        <div class="mb">
+
+            <label for="email" class="form-label"></label>
+            <input class="form-control" name = "email" type="text" autocomplete="email" placeholder="Email">
         
-            <label for="email"></label>
-            <input name = "email" type="text" autocomplete="email" placeholder="Email">
-        
-        
-            <label for="password"></label>
-            <input name = "password" type="password" autocomplete="current-password" placeholder="Contraseña">
-        
-        <input type="submit" value="Ingresar">
+        </div>
+        <div class="mb">
+            <label class="form-label" for="password"></label>
+            <input class="form-control" name = "password" type="password" autocomplete="current-password" placeholder="Contraseña">
+        </div>
+        {{#if message}}
+        <div class="mb">
+        <p class="message-register">{{message}}</p>
+        </div>
+        {{/if}}
+        <div class="cnt">
+        <button class="btn btn-primary" type="submit">Ingresar</button>
+        </div>
         </form>
     </div>
-    {{message}}
 {{>footer}}

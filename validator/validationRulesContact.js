@@ -18,9 +18,14 @@ const validationRulesContact = [
         const validationError = validationResult(req);
         if(!validationError.isEmpty()){
             const arrayWarning = validationError.array();
+
+            const nameError = arrayWarning.find(nameError => nameError.param === "name");
+            const emailError = arrayWarning.find(emailError => emailError.param === "email");
+            const consultaError = arrayWarning.find(consultaError => consultaError.param === "consulta");
+
             const formData = req.body;
-            console.log(formData);
-            res.render("contacto", {arrayWarning, formData})
+          
+            res.render("contacto", {arrayWarning, nameError, emailError, consultaError, formData})
         }else return next()
     }
 
