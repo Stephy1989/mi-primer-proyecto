@@ -59,7 +59,7 @@ app.use("/loginForm", routerUser);
 app.use("/registerForm", routerRegister);
 
 app.get("/usuarios", auth, (req, res)=> {
-    res.render("usuarios", {user: req.session.user},)
+    res.render("usuarios", {usr: req.session.user},)
 });
 
 app.use("/usuarios/settings", routerSettings);

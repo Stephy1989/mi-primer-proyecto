@@ -1,24 +1,28 @@
 
-  <nav class="navbar navbar-expand-lg bg-light container-fluid">
     {{#if usr}}
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <nav class="navbar navbar-expand-lg bg-light container-fluid">
+  <div class="grid-cont">
+
+     <div class="navbar-collapse centra-nav nav1" id="navbarNavAltMarkup">
       <div class="navbar-nav">
       <a class="nav-link" href="/">Inicio</a>
       <a class="nav-link" href="contacto">Contáctanos</a>
       <a class="nav-link" href="nosotros">Sobre nosotros</a>
       </div>
       </div>
-    </div>
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
+      <div class="navbar-collapse centra-nav nav2" id="navbarNavAltMarkup">
+      <div class="navbar-nav menu">
       <a class="nav-link" href="/usuarios/logOut"><input type="button" value="logout"></a>
       <a class="nav-link" href="/usuarios/settings"><input type="button" value="Configuración de la cuenta"></a>
       <a class="nav-link" href="/usuarios/validar"><input type="button" value="Validar cuenta"></a>
     </div>
       </div>
+  </div>
+   
+</nav>
     {{else}}
+    <nav class="navbar navbar-expand-lg bg-light container-fluid align">
+
       <div class="container-fluid navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
     <a class="nav-link" href="/">Inicio</a>
@@ -29,8 +33,8 @@
     </div>
     </div>
     </div>
+    </nav>
     {{/if}}
-</nav>
 
 
  

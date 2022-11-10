@@ -114,15 +114,35 @@ padding: 1rem;
 .cont-user{
     display: block;
 }
+.centra-nav{
+    padding-left: 6px;
+    padding-right: 6px;
+}
 
 
 
 
 @media screen and (max-width: 720px){
-    .navbar{
-        max-width: 200px;
-        margin-left: 0;
-    }
+.navbar{
+    width: 100%;
+}
+  .menu{
+    align-items: flex-end;
+  }
+.grid-cont{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "nav1 nav2";
+} 
+.nav1{
+    grid-area: "nav1";
+}
+  .nav2{
+    grid-area: "nav2";
+  }
+    
     .centrar-container{
         padding-top: 200px;
         width: 100%;

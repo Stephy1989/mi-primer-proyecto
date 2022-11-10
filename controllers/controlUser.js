@@ -65,8 +65,8 @@ async function sendRegisterForm (req, res, next){
                     validEmail: newUser.validEmail
                 }
                 req.session.user = usr;
-                
-                res.render("usuarios", {usr})
+                const messageRegister = "Su usuario ha sido creado satisfactoriamente, ya puedes iniciar sesión"
+                res.render("registerForm", {messageRegister})
             }else {
                 console.log(err.message)
             }
